@@ -17,28 +17,30 @@ const Banner = () => {
     };
   }, []);
   return (
-    <View style={styles.container}>
-      <View style={styles.swiper}>
-        <Swiper
-          styele={{ height: windowWith }}
-          showsButtons={false}
-          autoplay={true}
-          autoplayTimeout={2}
-        >
-          {bannerData.map((item) => {
-            return (
-              <Image
-                key={item}
-                style={styles.imageBanner}
-                resizeMode="contain"
-                source={{ uri: item }}
-              />
-            );
-          })}
-        </Swiper>
-        <View style={{ height: 20 }}></View>
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.swiper}>
+          <Swiper
+            style={{ height: windowWith / 2 }}
+            showsButtons={false}
+            autoplay={true}
+            autoplayTimeout={2}
+          >
+            {bannerData.map((item) => {
+              return (
+                <Image
+                  key={item}
+                  style={styles.imageBanner}
+                  resizeMode="contain"
+                  source={{ uri: item }}
+                />
+              );
+            })}
+          </Swiper>
+          <View style={{ height: 20 }}></View>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
