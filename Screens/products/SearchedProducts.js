@@ -12,7 +12,7 @@ const SearchedProducts = (props) => {
         productsFiltered.map((item) => (
           <ListItem
             //   onPress={natigation}
-            key={item.name}
+            key={item._id}
             avatar
           >
             <Left>
@@ -32,7 +32,7 @@ const SearchedProducts = (props) => {
         ))
       ) : (
         <View style={styles.center}>
-          <Text style={{ alignSelf: "center" }}>
+          <Text style={{ alignSelf: "center", padding: 20, }}>
             No Produtcs Match The Selected Criteria!!
           </Text>
         </View>

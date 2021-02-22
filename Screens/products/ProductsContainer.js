@@ -3,6 +3,8 @@ import { View, StyleSheet, ActivityIndicator, FlatList } from "react-native";
 import { Container, Header, Icon, Input, Item, Text } from "native-base";
 import ProductList from "./PoductList";
 import SearchedProducts from "./SearchedProducts";
+import Banner from "../../Shared/Banner";
+
 const data = require("../../assets/data/products.json");
 const ProductContainer = () => {
   // States
@@ -49,7 +51,9 @@ const ProductContainer = () => {
         <SearchedProducts productsFiltered={productsFiltered} />
       ) : (
         <View style={styles.container}>
-          <Text>Products Container</Text>
+          <View>
+            <Banner />
+          </View>
           <View style={styles.listContainer}>
             <FlatList
               data={products}
