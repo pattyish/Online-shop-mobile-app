@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#3578E5",
   },
   inactive: {
-    backgroundColor: "#ECF3FF",
+    backgroundColor: "grey",
   },
 });
 export default CategoryFilter;
