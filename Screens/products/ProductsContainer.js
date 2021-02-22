@@ -4,22 +4,33 @@ import { Container, Header, Icon, Input, Item, Text } from "native-base";
 import ProductList from "./PoductList";
 import SearchedProducts from "./SearchedProducts";
 import Banner from "../../Shared/Banner";
+import CategoriesFilter from "./CategoriesFilter";
 
 const data = require("../../assets/data/products.json");
+const categories = require("../../assets/data/categories");
 const ProductContainer = () => {
   // States
   const [products, setProducts] = useState([]);
   const [productsFiltered, setProductsFiltered] = useState([]);
   const [focus, setFocus] = useState();
+  const [categories, setCategories] = useState([]);
+  const [active, setActive] = useState();
+  const [initialState, setInitialState] = useState([]);
 
   useEffect(() => {
     setProducts(data);
     setProductsFiltered(data);
     setFocus(false);
+    setCategories(categories);
+    setActive(-1);
+    setInitialState(data);
     return () => {
       setProducts([]);
       setProductsFiltered([]);
       setFocus();
+      setCategories([]);
+      setActive();
+      setInitialState([]);
     };
   }, []);
 
@@ -50,9 +61,12 @@ const ProductContainer = () => {
       {focus == true ? (
         <SearchedProducts productsFiltered={productsFiltered} />
       ) : (
-        <View style={styles.container}>
+        <View>
           <View>
             <Banner />
+          </View>
+          <View>
+            <CategoriesFilter />
           </View>
           <View style={styles.listContainer}>
             <FlatList
