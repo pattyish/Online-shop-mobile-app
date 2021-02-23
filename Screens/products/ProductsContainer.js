@@ -60,7 +60,7 @@ const ProductContainer = () => {
   // categories
   const changeCategory = (categ) => {
     {
-      categ == "all"
+      categ === "all"
         ? [setProductCateg(initialState), setActive(true)]
         : [
             setProductCateg(products.filter((i) => i.category._id == categ)),
