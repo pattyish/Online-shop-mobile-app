@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, ActivityIndicator, FlatList } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { Container, Header, Icon, Input, Item, Text } from "native-base";
 import ProductList from "./PoductList";
 import SearchedProducts from "./SearchedProducts";
@@ -8,6 +14,8 @@ import CategoriesFilter from "./CategoriesFilter";
 
 const data = require("../../assets/data/products.json");
 const productCategories = require("../../assets/data/categories.json");
+
+var { height } = Dimensions.get("window");
 const ProductContainer = () => {
   // States
   const [products, setProducts] = useState([]);
@@ -23,6 +31,7 @@ const ProductContainer = () => {
     setProductsFiltered(data);
     setFocus(false);
     setCategories(productCategories);
+    setProductCateg(data);
     setActive(-1);
     setInitialState(data);
     return () => {
@@ -30,6 +39,7 @@ const ProductContainer = () => {
       setProductsFiltered([]);
       setFocus();
       setCategories([]);
+      setProductCateg([]);
       setActive();
       setInitialState([]);
     };
@@ -74,30 +84,33 @@ const ProductContainer = () => {
       {focus == true ? (
         <SearchedProducts productsFiltered={productsFiltered} />
       ) : (
-        <View>
+        <ScrollView>
           <View>
-            <Banner />
+            <View>
+              <Banner />
+            </View>
+            <View>
+              <CategoriesFilter
+                categories={categories}
+                categoryFilter={changeCategory}
+                productCateg={productCateg}
+                active={active}
+                setActive={setActive}
+              />
+            </View>
+            {productCateg.length > 0 ? (
+              <View style={styles.listContainer}>
+                {productCateg.map((item) => {
+                  return <ProductList key={item._id} item={item} />;
+                })}
+              </View>
+            ) : (
+              <View style={[styles.center, { height: height / 2 }]}>
+                <Text>No Products Founds of This Category!!</Text>
+              </View>
+            )}
           </View>
-          <View>
-            <CategoriesFilter
-              categories={categories}
-              categoryFilter={changeCategory}
-              productCateg={productCateg}
-              active={active}
-              setActive={setActive}
-            />
-          </View>
-          <View style={styles.listContainer}>
-            <FlatList
-              data={products}
-              numColumns={2}
-              renderItem={({ item }) => (
-                <ProductList key={item.id} item={item} />
-              )}
-              keyExtractor={(item) => item.name}
-            />
-          </View>
-        </View>
+        </ScrollView>
       )}
     </Container>
   );
@@ -109,8 +122,16 @@ const styles = StyleSheet.create({
     backgroundColor: "gainsboro",
   },
   listContainer: {
+    height: height,
     flex: 1,
     flexDirection: "row",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
+    backgroundColor: "gainsboro",
+  },
+  center: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
