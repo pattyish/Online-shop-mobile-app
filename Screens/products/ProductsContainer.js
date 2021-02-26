@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
   ActivityIndicator,
   Dimensions,
   ScrollView,
-} from "react-native";
-import { Container, Header, Icon, Input, Item, Text } from "native-base";
-import ProductList from "./PoductList";
-import SearchedProducts from "./SearchedProducts";
-import Banner from "../../Shared/Banner";
-import CategoriesFilter from "./CategoriesFilter";
+} from 'react-native';
+import { Container, Header, Icon, Input, Item, Text } from 'native-base';
+import ProductList from './PoductList';
+import SearchedProducts from './SearchedProducts';
+import Banner from '../../Shared/Banner';
+import CategoriesFilter from './CategoriesFilter';
 
-const data = require("../../assets/data/products.json");
-const productCategories = require("../../assets/data/categories.json");
+const data = require('../../assets/data/products.json');
+const productCategories = require('../../assets/data/categories.json');
 
-var { height } = Dimensions.get("window");
+var { height } = Dimensions.get('window');
 const ProductContainer = () => {
   // States
   const [products, setProducts] = useState([]);
@@ -47,7 +47,7 @@ const ProductContainer = () => {
 
   const searchProduct = (text) => {
     setProductsFiltered(
-      products.filter((i) => i.name.toLowerCase().includes(text.toLowerCase()))
+      products.filter((i) => i.name.toLowerCase().includes(text.toLowerCase())),
     );
   };
   const openList = () => {
@@ -60,7 +60,7 @@ const ProductContainer = () => {
   // categories
   const changeCategory = (categ) => {
     {
-      categ === "all"
+      categ === 'all'
         ? [setProductCateg(initialState), setActive(true)]
         : [
             setProductCateg(products.filter((i) => i.category._id == categ)),
@@ -72,13 +72,13 @@ const ProductContainer = () => {
     <Container>
       <Header searchBar rounded>
         <Item>
-          <Icon name="ios-search" />
+          <Icon name='ios-search' />
           <Input
-            placeholder="Search Product"
+            placeholder='Search Product'
             onFocus={openList}
             onChangeText={(text) => searchProduct(text)}
           />
-          {focus == true ? <Icon name="ios-close" onPress={onBlur} /> : null}
+          {focus == true ? <Icon name='ios-close' onPress={onBlur} /> : null}
         </Item>
       </Header>
       {focus == true ? (
@@ -118,20 +118,20 @@ const ProductContainer = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexWrap: "wrap",
-    backgroundColor: "gainsboro",
+    flexWrap: 'wrap',
+    backgroundColor: 'gainsboro',
   },
   listContainer: {
     height: height,
     flex: 1,
-    flexDirection: "row",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
-    backgroundColor: "gainsboro",
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    backgroundColor: 'gainsboro',
   },
   center: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

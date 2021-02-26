@@ -1,8 +1,8 @@
-import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import { Content, Left, Body, ListItem, Thumbnail, Text } from "native-base";
+import React from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { Content, Left, Body, ListItem, Thumbnail, Text } from 'native-base';
 
-var windowWith = Dimensions.get("window").width;
+var windowWith = Dimensions.get('window').width;
 
 const SearchedProducts = (props) => {
   const { productsFiltered } = props;
@@ -20,7 +20,7 @@ const SearchedProducts = (props) => {
                 source={{
                   uri: item.image
                     ? item.image
-                    : "https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png",
+                    : 'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png',
                 }}
               />
             </Left>
@@ -32,7 +32,7 @@ const SearchedProducts = (props) => {
         ))
       ) : (
         <View style={styles.center}>
-          <Text style={{ alignSelf: "center", padding: 20, }}>
+          <Text style={{ alignSelf: 'center', padding: 20 }}>
             No Produtcs Match The Selected Criteria!!
           </Text>
         </View>
@@ -43,8 +43,8 @@ const SearchedProducts = (props) => {
 
 const styles = StyleSheet.create({
   center: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default SearchedProducts;

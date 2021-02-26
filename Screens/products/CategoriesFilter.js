@@ -1,19 +1,19 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-import { ListItem, Badge, Text } from "native-base";
+import React from 'react';
+import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { ListItem, Badge, Text } from 'native-base';
 
 const CategoryFilter = (props) => {
   return (
     <ScrollView
       bounces={true}
       horizontal={true}
-      style={{ backgroundColor: "#f2f2f2" }}
+      style={{ backgroundColor: '#f2f2f2' }}
     >
       <ListItem style={{ margin: 0, padding: 0, borderRadius: 0 }}>
         <TouchableOpacity
           key={1}
           onPress={() => {
-            props.categoryFilter("all"), props.setActive(-1);
+            props.categoryFilter('all'), props.setActive(-1);
           }}
         >
           <Badge
@@ -23,7 +23,7 @@ const CategoryFilter = (props) => {
               props.active == -1 ? styles.active : styles.inactive,
             ]}
           >
-            <Text style={{ color: "white" }}>All</Text>
+            <Text style={{ color: 'white' }}>All</Text>
           </Badge>
         </TouchableOpacity>
         {props.categories.map((item) => (
@@ -43,7 +43,7 @@ const CategoryFilter = (props) => {
                   : styles.inactive,
               ]}
             >
-              <Text style={{ color: "white" }}>{item.name}</Text>
+              <Text style={{ color: 'white' }}>{item.name}</Text>
             </Badge>
           </TouchableOpacity>
         ))}
@@ -54,14 +54,14 @@ const CategoryFilter = (props) => {
 
 const styles = StyleSheet.create({
   center: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   active: {
-    backgroundColor: "#3578E5",
+    backgroundColor: '#3578E5',
   },
   inactive: {
-    backgroundColor: "grey",
+    backgroundColor: 'grey',
   },
 });
 export default CategoryFilter;

@@ -1,7 +1,7 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import ProductContainer from "../Screens/Products/ProductsContainer";
+import ProductContainer from '../Screens/Products/ProductsContainer';
 
 const Stack = createStackNavigator();
 
@@ -9,7 +9,7 @@ function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name='Home'
         component={ProductContainer}
         options={{ headerShown: false }}
       />
